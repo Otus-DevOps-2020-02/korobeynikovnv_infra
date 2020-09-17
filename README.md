@@ -9,5 +9,5 @@ bastion_IP=84.201.177.74
 someinternalhost_IP=10.130.0.12
 
 #Домашнее задание №6 тестовое приложение на руби
-testapp_IP = 178.154.227.39
+testapp_IP = 178.154.224.94
 testapp_port = 9292
