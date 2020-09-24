@@ -1,0 +1,35 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "{{user `service_account_key_file`}}",
+            "folder_id": "{{user `folder_id`}}",
+            "source_image_family": "ubuntu-1604-lts",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-base",
+            "ssh_username": "ubuntu",
+            "platform_id": "standard-v1",
+	    "use_ipv4_nat" : "true",
+	    "zone": "{{user `zone`}}",
+	    "subnet_id": "{{user `subnet_id`}}"
+        }
+    ],
+    "provisioners": [
+	{
+	    "type":"shell",
+	    "inline":"/usr/bin/cloud-init status --wait"
+	},
+        {
+            "type": "shell",
+            "script": "./scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}",
+	    "max_retries" : 5
+        },
+        {
+            "type": "shell",
+            "script": "./scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}",
+	    "max_retries": 5
+        }    
+    ]
+}
