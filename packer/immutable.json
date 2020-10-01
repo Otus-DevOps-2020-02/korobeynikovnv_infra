@@ -24,23 +24,25 @@
 	    "type":"shell",
 	    "inline":"/usr/bin/cloud-init status --wait"
 	},
+	{
+	    "type":"shell",
+	    "script":"./scripts/await_updates.sh",
+	    "execute_command":"sudo {{.Path}}"
+	},
         {
             "type": "shell",
             "script": "./scripts/install_ruby.sh",
-            "execute_command": "sudo {{.Path}}",
-	    "max_retries" : 5
+            "execute_command": "sudo {{.Path}}"
         },
         {
             "type": "shell",
             "script": "./scripts/install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}",
-	    "max_retries": 5
+            "execute_command": "sudo {{.Path}}"
         },
 	{
             "type":"shell",
 	    "script":"./scripts/deploy.sh",
-	    "execute_command":"{{.Path}}",
-	    "max_retries": 5
+	    "execute_command":"{{.Path}}"
 	}
     ]
 }
