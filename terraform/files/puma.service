@@ -1,0 +1,16 @@
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/etc/reddit-application
+Environment=RAILS_ENV=production
+
+ExecStart=/usr/local/bin/puma -d
+Restart=always
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
