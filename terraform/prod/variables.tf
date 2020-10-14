@@ -20,8 +20,8 @@ variable service_account_key_file {
   description = "key .json"
 }
 variable db_image_id {
- description = "db image id"
+  description = "db image id"
 }
 variable app_image_id {
- description = "app image id"
+  description = "app image id"
 }
